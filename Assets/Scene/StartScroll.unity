@@ -150,8 +150,8 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77364684}
-  m_Text: "Alien invasion!\nYou need to build a super \ncomputer to defend the aliens
-    \nand save the world"
+  m_Text: "Aliens have invaded the earth \nand it is upto you to travel in \ntime
+    and build the right computers \nto be able to defeat the aliens."
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -407,7 +407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next
+  m_Text: Start
 --- !u!222 &445252161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794084659}
-  m_Text: Hello World
+  m_Text: Cyber Pinball
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -598,7 +598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794084659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.79, y: 16.55, z: 0}
+  m_LocalPosition: {x: -28.7, y: 16.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -823,7 +823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: Quit
 --- !u!222 &1138159599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -844,8 +844,9 @@ GameObject:
   - component: {fileID: 1243468601}
   - component: {fileID: 1243468600}
   - component: {fileID: 1243468599}
+  - component: {fileID: 1243468602}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -953,6 +954,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243468597}
   m_CullTransparentMesh: 1
+--- !u!114 &1243468602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243468597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c8686303db1524588474c4951e5d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1726825960
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +978,7 @@ GameObject:
   - component: {fileID: 1726825964}
   - component: {fileID: 1726825963}
   - component: {fileID: 1726825962}
+  - component: {fileID: 1726825965}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -1074,3 +1088,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726825960}
   m_CullTransparentMesh: 1
+--- !u!114 &1726825965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726825960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568265c5a264bdf458103bff15399378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
