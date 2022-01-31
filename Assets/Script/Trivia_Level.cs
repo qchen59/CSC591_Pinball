@@ -13,13 +13,13 @@ public class Trivia_Level : MonoBehaviour
 
     public int levelNumber = 0;
     public GameObject score;
-    private List<string> questionString = new List<string>() { "abc" };
-    private List<string> op1String = new List<string>() { "a" };
-    private List<string> op2String = new List<string>() { "b" };
-    private List<string> op3String = new List<string>() { "c" };
-    private List<string> op4String = new List<string>() { "d" };
+    private List<string> questionString = new List<string>() { "Which of the following devices is input device?", "Which of the following devices is processing device ?", "What is the full name of AMD?" };
+    private List<string> op1String = new List<string>() { "Monitor", "Chipset", "American Micro Development"};
+    private List<string> op2String = new List<string>() { "Printer", "Magnetic Devices","Adcance Micro Development"};
+    private List<string> op3String = new List<string>() { "Mouse", "Random Access Memory","American Micro Devices"};
+    private List<string> op4String = new List<string>() { "Projector", "Hard Disk Drive","Advanced Micro Devices"};
 
-    public List<int> correct = new List<int>() { 1 };
+    public List<int> correct = new List<int>() { 3, 1, 4 };
 
     private void Start()
     { 
