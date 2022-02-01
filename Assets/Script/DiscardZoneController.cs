@@ -4,32 +4,50 @@ using UnityEngine;
 
 public class DiscardZoneController : MonoBehaviour
 {
-    public AudioSource discardSound;
-    public GameObject pg;
+    float countDown = 3.5f;
+    bool forward = false;
+    bool backward = false;
+    bool change = false;
 
 
 
     private void Start()
     {
-        discardSound = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-
-    }
-
-    // On trigger enter the discard zone
-    private void OnTriggerEnter(Collider other)
-    {
-        GameObject colliBall = other.gameObject;
-        if (colliBall.tag == "Ball")
+        if (countDown > 0f && !change && !backward) forward = true;
+        if (countDown <= 0f && !change)
         {
-            discardSound.Play();
-            // Discard the ball
-            colliBall.SetActive(false);
-            pg.GetComponent<PinballGame>().discard = true;
-            pg.GetComponent<PinballGame>().discardComponent = colliBall.GetComponent<BallController>().component;
+            forward = false;
+            change = true;
+        }
+
+        if(countDown <= 0f && change && !backward)
+        {
+            backward = true;
+        }
+
+        if (countDown > 3.5f && change && backward)
+        {
+            forward = true;
+            backward = false;
+            change = false;
+        }
+
+        if (forward)
+        {
+            transform.position += new Vector3(0.3f,0f,0f) * Time.deltaTime;
+            countDown -= Time.deltaTime;
+        }
+
+        else if (backward)
+        {
+            transform.position += new Vector3(-0.3f, 0f, 0f) * Time.deltaTime;
+            countDown += Time.deltaTime;
         }
     }
+
+
 }

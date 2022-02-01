@@ -6,14 +6,18 @@ using UnityEngine.EventSystems;
 public class buttonScore : MonoBehaviour, IPointerClickHandler
 {
     public GameObject score;
-    private GameObject correct;
     public GameObject trivia;
     public GameObject yes;
     public GameObject no;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         int levelNumber = score.GetComponent<score>().levelNumber;
-        if (trivia.GetComponent<Trivia_Level>().correct[levelNumber] == 1 && this.gameObject.name.Equals("op1"))
+        //Debug.Log("The level number is " + levelNumber);
+        //Debug.Log(trivia.GetComponent<Trivia_Level>().correct[0]);
+        //Debug.Log(trivia.GetComponent<Trivia_Level>().correct[1]);
+        //Debug.Log(trivia.GetComponent<Trivia_Level>().correct[3]);
+        if (trivia.GetComponent<Trivia_Level>().correctAnwsers[levelNumber] == 1 && gameObject.name.Equals("op1"))
         {
             score.GetComponent<score>().scores += 10;
             trivia.SetActive(false);
@@ -21,7 +25,7 @@ public class buttonScore : MonoBehaviour, IPointerClickHandler
 
         }
 
-        else if (trivia.GetComponent<Trivia_Level>().correct[levelNumber] == 2 && this.gameObject.name.Equals("op2"))
+        else if (trivia.GetComponent<Trivia_Level>().correctAnwsers[levelNumber] == 2 && this.gameObject.name.Equals("op2"))
         {
             score.GetComponent<score>().scores += 10;
             trivia.SetActive(false);
@@ -29,7 +33,7 @@ public class buttonScore : MonoBehaviour, IPointerClickHandler
 
         }
 
-        else if (trivia.GetComponent<Trivia_Level>().correct[levelNumber] == 3 && this.gameObject.name.Equals("op3"))
+        else if (trivia.GetComponent<Trivia_Level>().correctAnwsers[levelNumber] == 3 && this.gameObject.name.Equals("op3"))
         {
             score.GetComponent<score>().scores += 10;
             trivia.SetActive(false);
@@ -37,7 +41,7 @@ public class buttonScore : MonoBehaviour, IPointerClickHandler
 
         }
 
-        else if (trivia.GetComponent<Trivia_Level>().correct[levelNumber] == 4 && this.gameObject.name.Equals("op4"))
+        else if (trivia.GetComponent<Trivia_Level>().correctAnwsers[levelNumber] == 4 && this.gameObject.name.Equals("op4"))
         {
             score.GetComponent<score>().scores += 10;
             trivia.SetActive(false);

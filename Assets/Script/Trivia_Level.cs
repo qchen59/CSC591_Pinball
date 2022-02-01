@@ -19,7 +19,7 @@ public class Trivia_Level : MonoBehaviour
     private List<string> op3String = new List<string>() { "Mouse", "Random Access Memory","American Micro Devices"};
     private List<string> op4String = new List<string>() { "Projector", "Hard Disk Drive","Advanced Micro Devices"};
 
-    public List<int> correct = new List<int>() { 3, 1, 4 };
+    public List<int> correctAnwsers = new List<int>() { 3, 1, 4 };
 
     private void Start()
     { 
@@ -38,5 +38,6 @@ void Update()
 
             
         }
+        
     }
 }

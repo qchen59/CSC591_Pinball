@@ -13,16 +13,45 @@ public class BallController : MonoBehaviour
     // Current component name
     public string component = "";
     // List of component name
-    private List<string> componentList = new List<string>() { "correct component 1", "correct component 2", "correct component 3", "incorrect component 1", "incorrect component 2", "incorrect component 3" };
+    private List<string> componentList = new List<string>() { "Monitor", "Mouse", "Keyboard" };
     MeshFilter ballMesh;
     public bool changeComponent = false;
+    public GameObject score;
+    public AudioSource bonusSound;
+    public AudioSource discardSound;
+    public int scoreIncrement = 10;
+    Mesh Monitor;
+    Mesh Keyboard;
+    Mesh Mouse;
+    GameObject mt;
+    GameObject kb;
+    GameObject ms;
+    //Material[] mtm;
+    //Material[] kbm;
+    //Material[] mm;
+    //MeshRenderer ballMeshRender;
+
+
 
     void Start()
     {
         ball = GameObject.Find("Ball");
+        mt = GameObject.Find("Monitor");
+        kb = GameObject.Find("Keyboard");
+        ms = GameObject.Find("Mouse");
+        mt.SetActive(false);
+        ms.SetActive(false);
+        kb.SetActive(false);
+        Monitor = mt.GetComponent<MeshFilter>().mesh;
+        Keyboard = kb.GetComponent<MeshFilter>().mesh;
+        Mouse = ms.GetComponent<MeshFilter>().mesh;
+        //mtm = mt.GetComponent<MeshRenderer>().materials;
+        //kbm = kb.GetComponent<MeshRenderer>().materials;
+        //mm = ms.GetComponent<MeshRenderer>().materials;
         // Assign the Rigidbody component
         rb = GetComponent<Rigidbody>();
         assignComponent();
+
 
 
 
@@ -33,16 +62,36 @@ public class BallController : MonoBehaviour
         // Random assign the component to the ball
         List<string> cl = pg.GetComponent<PinballGame>().componentList;
         System.Random rand = new System.Random();
-        int componentIdx = rand.Next(1, cl.Count + 1);
-        component = componentList[componentIdx];
+        int componentIdx = rand.Next(0, cl.Count);
+        Debug.Log(componentIdx);
+        component = cl[componentIdx];
         assignMesh();
     }
 
     void assignMesh()
     {
         ballMesh = ball.GetComponent<MeshFilter>();
-        // Assign the specific mesh to the ball
-        ballMesh.sharedMesh = Resources.Load<Mesh>(component + "Mesh");
+        //ballMeshRender = ball.GetComponent<MeshRenderer>();
+
+
+        if (component == "Monitor")
+        {
+            ballMesh.mesh = Monitor;
+            //ballMeshRender.materials = mtm;
+        }
+        if (component == "Keyboard")
+        {
+            Debug.Log(component);
+            ballMesh.mesh = Keyboard;
+            //ballMeshRender.materials = kbm;
+        }
+        if (component == "Mouse")
+        {
+            Debug.Log(component);
+            ballMesh.mesh = Mouse;
+            //ballMeshRender.materials = mm;
+        }
+
     }
 
     private void Update()
@@ -54,5 +103,31 @@ public class BallController : MonoBehaviour
             changeComponent = false;
         }
     }
+
+    // If on trigger enter the bonus object
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bonus")
+        {
+            // Bonus dispear
+            other.gameObject.SetActive(false);
+            bonusSound.Play();
+            pg.GetComponent<PinballGame>().bonus = true;
+            //Add bonus score when hit the bonus
+            score.GetComponent<score>().scores = score.GetComponent<score>().scores + scoreIncrement;
+        }
+
+        if (other.gameObject.tag == "Discard")
+        {
+            
+            discardSound.Play();
+            // Discard the ball
+            this.gameObject.SetActive(false);
+            pg.GetComponent<PinballGame>().discard = true;
+            pg.GetComponent<PinballGame>().discardComponent = component;
+        }
+    }
+
+
 
 }

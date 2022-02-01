@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectedComponentController : MonoBehaviour
 {
     public string component;
-    public bool collected;
+    public bool collected = false;
     // Start is called before the first frame update
     void Start()
     {

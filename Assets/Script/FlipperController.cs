@@ -7,8 +7,8 @@ public class FlipperController : MonoBehaviour
 
     public float restPosition = 0f;
     public float pressedPosition = 45f;
-    public float hitStrength = 25000f;
-    public float flipperDamper = 100f;
+    public float hitStrength = 20f;
+    public float flipperDamper = 10f;
     public KeyCode inputKey;
 
     HingeJoint hinge;
